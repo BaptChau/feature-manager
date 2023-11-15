@@ -1,0 +1,14 @@
+{
+  "name": "baptchau/feature-manager",
+  "description": "description",
+  "minimum-stability": "stable",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "BaptChau",
+      "email": "chaudron964+github@gmail.com"
+    }
+  ],
+  "require": {
+  }
+}

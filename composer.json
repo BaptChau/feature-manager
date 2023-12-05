@@ -9,6 +9,16 @@
       "email": "chaudron964+github@gmail.com"
     }
   ],
+  "autoload": {
+    "psr-4": {
+      "BaptChau\\": "src/",
+      "BaptChau\\Test\\": "test/"
+    }
+  },
+  "require-dev": {
+    "phpunit/phpunit": "10.2"
+  },
   "require": {
+    "symfony/yaml": "^7.0"
   }
 }

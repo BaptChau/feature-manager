@@ -1,0 +1,10 @@
+flags:
+  valid_flag:
+    author: "baptiste-chaudron"
+    description: "This is a valid description"
+    deleteDate: "2023-12-25"
+    constraints:
+      date:
+        openingDate: "2023-12-20"
+        closingDate: "2023-12-24"
+      switch: false

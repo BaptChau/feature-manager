@@ -1,0 +1,27 @@
+# Feature flags
+#
+# Add a flag under "flags":
+#
+#   my_flag:                        # unique name, used in FeatureManager::isEnabled("my_flag")
+#     author: "your-name"           # required
+#     description: "What it does"   # required
+#     deleteDate: "2026-12-31"      # required, date after which the flag must be removed
+#     constraints:                  # optional, the flag is enabled only if ALL constraints pass
+#       date:                       # enabled from openingDate (included) to closingDate (excluded)
+#         openingDate: "2026-12-20" #   both dates are optional, but at least one is needed
+#         closingDate: "2026-12-24"
+#       list: ["user-1", "user-2"]  # enabled only for these subjects: isEnabled("my_flag", "user-1")
+#       switch: true                # false turns the flag off whatever the other constraints say
+#
+# Check the file after editing it: vendor/bin/validate-flags
+#
+# This file is read from config/feature_flag.yaml by default. To move it, set in your composer.json:
+#   "extra": { "feature-manager": { "config-file": "path/to/flags.yaml" } }
+
+flags:
+  example_flag:
+    author: "baptiste-chaudron"
+    description: "Example flag, replace it with your own"
+    deleteDate: "2026-12-31"
+    constraints:
+      switch: false

@@ -9,14 +9,11 @@ flags:
           openingDate: "2023-12-20"
           closingDate: "2023-12-24"
         switch: false
-    deleteDate:
+    badDeleteDate:
       author: "bapt"
       description: "This is a valid description"
-      deleteDate: "1970-12-25"
+      deleteDate: "not a date"
       constraints:
-        date:
-          openingDate: "2023-12-20"
-          closingDate: "2023-12-24"
         switch: false
     badOpeningDate:
       author: "bapt"
@@ -24,6 +21,18 @@ flags:
       deleteDate: "2025-12-25"
       constraints:
         date:
-          openingDate: "2021-12-20"
+          openingDate: "2024-12-20"
           closingDate: "2023-12-24"
         switch: false
+    unknownConstraint:
+      author: "bapt"
+      description: "This is a valid description"
+      deleteDate: "2025-12-25"
+      constraints:
+        percentage: 50
+    emptyList:
+      author: "bapt"
+      description: "This is a valid description"
+      deleteDate: "2025-12-25"
+      constraints:
+        list: []

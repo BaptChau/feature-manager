@@ -22,8 +22,8 @@ class ValidateFlagTest extends TestCase
     {
         $config = Yaml::parseFile("test/config/invalidFeature.yaml");
 
-        $this->assertFalse(FlagValidator::validateFlag($config['flags']['invalid_flag']['badAuthor']));
-        $this->assertFalse(FlagValidator::validateFlag($config['flags']['invalid_flag']['deleteDate']));
-        $this->assertFalse(FlagValidator::validateFlag($config['flags']['invalid_flag']['badOpeningDate']));
+        foreach ($config['flags']['invalid_flag'] as $case => $flag) {
+            $this->assertFalse(FlagValidator::validateFlag([$case => $flag]), "$case should be invalid");
+        }
     }
 }

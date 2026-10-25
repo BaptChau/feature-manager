@@ -1,0 +1,26 @@
+flags:
+  christmas_banner:
+    author: "baptiste-chaudron"
+    description: "Banner displayed during christmas week"
+    deleteDate: "2024-01-15"
+    constraints:
+      date:
+        openingDate: "2023-12-20"
+        closingDate: "2023-12-27"
+      switch: true
+  beta_dashboard:
+    author: "baptiste-chaudron"
+    description: "New dashboard, only for beta testers"
+    deleteDate: "2024-06-01"
+    constraints:
+      list: ["user-1", "user-2"]
+  killed_feature:
+    author: "baptiste-chaudron"
+    description: "Turned off manually"
+    deleteDate: "2024-06-01"
+    constraints:
+      switch: false
+  always_on:
+    author: "baptiste-chaudron"
+    description: "No constraint, always enabled"
+    deleteDate: "2023-12-01"

@@ -1,0 +1,23 @@
+#!/usr/bin/env php
+<?php
+
+use BaptChau\Config\ConfigLocator;
+use BaptChau\Exception\InvalidFlagException;
+use BaptChau\FeatureManager;
+
+// composer sets this when the script is run from vendor/bin
+require $GLOBALS['_composer_autoload_path'] ?? __DIR__ . "/../vendor/autoload.php";
+
+try {
+    $path = $argv[1] ?? ConfigLocator::getConfigFile();
+    $manager = FeatureManager::fromYamlFile($path);
+} catch (InvalidFlagException $e) {
+    fwrite(STDERR, "Invalid flag config: {$e->getMessage()}\n");
+    exit(1);
+}
+
+echo count($manager->all()) . " flag(s) loaded from $path\n";
+
+foreach ($manager->getExpiredFlags() as $name => $flag) {
+    echo "Warning: \"$name\" passed its deleteDate ({$flag->getDeleteDateFormat()}), remove it\n";
+}

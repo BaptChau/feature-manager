@@ -1,37 +1,25 @@
 <?php
 
 namespace BaptChau\Helper;
+
+use BaptChau\Exception\InvalidFlagException;
 use BaptChau\Model\Flag;
 
 class FlagValidator
 {
     /**
      * Validation of a flag passed in params
-     * 
+     *
+     * Only checks the structure of the flag: an expired or disabled flag is still valid.
+     *
      * @param array $flag flag to validate
      * @return boolean true if valid
      */
     public static function validateFlag(array $flag): bool
     {
-        $flag = Flag::createFromArray($flag);
-
-        if (trim($flag->getFlagName()) === "") {
-            return false;
-        }
-
-        if ($flag->getDeleteDateFormat() < date("Y-m-d", strtotime("-7 days"))) {
-            return false;
-        }
-
-        if (!ConstraintValidator::checkConstraints($flag->getConstraints())) {
-            return false;
-        }
-
-        if (trim($flag->getDescription()) === "") {
-            return false;
-        }
-
-        if (trim($flag->getAuthor()) === "") {
+        try {
+            Flag::createFromArray($flag);
+        } catch (InvalidFlagException) {
             return false;
         }
 
